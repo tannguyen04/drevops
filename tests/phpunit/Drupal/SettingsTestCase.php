@@ -187,16 +187,13 @@ abstract class SettingsTestCase extends TestCase {
    * Require settings file.
    */
   protected function requireSettingsFile(): void {
-    $app_root = getcwd();
-    if (empty($app_root)) {
-      throw new \RuntimeException('Could not determine application root.');
-    }
+    $app_root = './web';
     $site_path = 'sites/default';
     $config = [];
     $settings = [];
     $databases = [];
 
-    require $app_root . DIRECTORY_SEPARATOR . $site_path . DIRECTORY_SEPARATOR . 'settings.php';
+    require getcwd() . DIRECTORY_SEPARATOR . $app_root . '/' . $site_path . '/settings.php';
 
     $this->app_root = $app_root;
     $this->site_path = $site_path;
